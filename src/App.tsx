@@ -1,4 +1,6 @@
-import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Home from './Page/Home'
+import Detail from './Page/Detail'
 // import usePokemonList from './hooks/usePokemonList'
 // import usePokemonDetails from './hooks/usePokemonDetail'
 
@@ -9,12 +11,10 @@ function App() {
   // const detail = usePokemonDetails("bulbasaur");
 
   return (
-    <div>
-      {/* Start the development here */}
-      {/* Use react-router-dom Expected routes:  */}
-      {/* 1. Home path: "/" */}
-      {/* 1. Details path: "/details:" */}
-    </div>
+    <Routes>
+      <Route path='/' element={<Home />} />
+      <Route path='/detail/:name' element={<Detail />} />
+    </Routes>
   )
 }
 

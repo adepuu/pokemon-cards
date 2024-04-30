@@ -1,36 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 
 interface Pokemon {
-  name: string;
-  url: string;
+  name: string
+  url: string
 }
 
 const usePokemonList = () => {
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<unknown>(null);
+  const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
+  const [error, setError] = useState<unknown>(null)
 
   useEffect(() => {
     const fetchPokemonList = async () => {
       try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
+        const response = await fetch(
+          'https://pokeapi.co/api/v2/pokemon?limit=20'
+        )
         if (!response.ok) {
-          throw new Error('Failed to fetch Pokémon.');
+          throw new Error('Failed to fetch Pokémon.')
         }
-        const data = await response.json();
-        console.log(data);
-        setPokemonList(data.results);
-        setLoading(false);
+        const data = await response.json()
+        setPokemonList(data.results)
+        setLoading(false)
       } catch (error) {
-        setError(error);
-        setLoading(false);
+        setError(error)
+        setLoading(false)
       }
-    };
+    }
 
-    fetchPokemonList();
-  }, []);
+    fetchPokemonList()
+  }, [])
 
-  return { pokemonList, loading, error };
-};
+  return { pokemonList, loading, error }
+}
 
-export default usePokemonList;
+export default usePokemonList
