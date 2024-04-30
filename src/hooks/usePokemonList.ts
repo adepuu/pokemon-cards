@@ -18,7 +18,6 @@ const usePokemonList = () => {
           throw new Error('Failed to fetch Pokémon.');
         }
         const data = await response.json();
-        console.log(data);
         setPokemonList(data.results);
         setLoading(false);
       } catch (error) {

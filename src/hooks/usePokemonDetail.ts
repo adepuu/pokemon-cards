@@ -18,6 +18,12 @@ const usePokemonDetails = (pokemonName: string) => {
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
+      if (!pokemonName) {
+        setError(new Error("Empty name"));
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
         if (!response.ok) {
