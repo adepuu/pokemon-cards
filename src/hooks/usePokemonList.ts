@@ -28,11 +28,6 @@ const usePokemonList = () => {
     };
 
     fetchPokemonList();
-
-    // Clean up function
-    return () => {
-      // Any cleanup code if needed
-    };
   }, []);
 
   return { pokemonList, loading, error };

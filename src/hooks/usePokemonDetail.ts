@@ -40,11 +40,6 @@ const usePokemonDetails = (pokemonName: string) => {
     };
 
     fetchPokemonDetails();
-
-    // Clean up function
-    return () => {
-      // Any cleanup code if needed
-    };
   }, [pokemonName]);
 
   return { pokemonDetails, loading, error };
