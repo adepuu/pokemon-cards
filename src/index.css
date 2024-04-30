@@ -1,4 +1,18 @@
-body, html {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("DM Sans"),
+    url("https://fonts.cdnfonts.com/s/29932/DMSans-Bold.woff") format("woff");
+}
+
+body,
+html {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
