@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 interface Pokemon {
   name: string;
@@ -13,12 +13,14 @@ const usePokemonList = () => {
   useEffect(() => {
     const fetchPokemonList = async () => {
       try {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20');
+        const response = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=20"
+        );
         if (!response.ok) {
-          throw new Error('Failed to fetch Pokémon.');
+          throw new Error("Failed to fetch Pokémon.");
         }
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setPokemonList(data.results);
         setLoading(false);
       } catch (error) {
