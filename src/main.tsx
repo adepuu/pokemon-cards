@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ListPage from './pages/ListPage/index.tsx';
 import PokeDetail from './pages/PokeDetail/index.tsx';
+import { PokemonProvider } from './context/PokemonProvider.tsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <PokemonProvider>
+      <RouterProvider router={router} />
+    </PokemonProvider>
   </React.StrictMode>,
 )

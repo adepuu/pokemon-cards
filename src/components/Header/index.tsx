@@ -1,5 +1,5 @@
 import pokemonLogo from "../../assets/pokemon-logo.png";
-import searchIcon from "../../assets/search.png";
+import SearchField from "./SearchField";
 
 interface HeaderProps {
   withSearch?: boolean;
@@ -13,13 +13,7 @@ const Header: React.FC<HeaderProps> = ({ withSearch }) => {
         alt="pokemon logo"
         className="h-full w-auto object-contain"
       />
-      {withSearch ? (
-        <img
-          src={searchIcon}
-          alt="pokemon logo"
-          className="w-6 h-5 object-contain"
-        />
-      ) : null}
+      {withSearch ? <SearchField /> : null}
     </header>
   );
 };
