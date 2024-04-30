@@ -1,5 +1,5 @@
 // import usePokemonList from "../../hooks/usePokemonList";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import usePokemonDetails from "../../hooks/usePokemonDetail";
 
 interface CardProps {
@@ -10,17 +10,16 @@ const Card: React.FC<CardProps> = ({ pokemon }) => {
   const { pokemonDetails } = usePokemonDetails(pokemon.name);
   // console.log(pokemonDetails?.id);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const toDetails = () => {
-  //   navigate(`/details/${pokemonDetails?.id}`);
-  // };
+  const toDetails = () => {
+    navigate(`/details/${pokemonDetails?.id}`);
+  };
 
   return (
     <div
       className="card bg-[#F0F3FF] shadow-md rounded-lg m-4 cursor-pointer"
-      // onClick={toDetails}
-    >
+      onClick={toDetails}>
       <img
         src={pokemonDetails?.artworkFront}
         className="card-img-top mx-auto my-8"
