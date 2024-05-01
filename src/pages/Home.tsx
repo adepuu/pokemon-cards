@@ -1,15 +1,12 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
-// import Card from "../components/Card/Card";
 import Content from "../components/Content/Content";
 
 const Home: React.FC = () => {
   return (
     <>
-      <Navbar />
+      <Navbar showSearchIcon={true} />
       <Content />
-      {/* <Card /> */}
-      {/* <div>Home</div> */}
     </>
   );
 };

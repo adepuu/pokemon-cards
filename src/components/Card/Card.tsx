@@ -1,4 +1,3 @@
-// import usePokemonList from "../../hooks/usePokemonList";
 import { useNavigate } from "react-router-dom";
 import usePokemonDetails from "../../hooks/usePokemonDetail";
 
@@ -8,7 +7,6 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ pokemon }) => {
   const { pokemonDetails } = usePokemonDetails(pokemon.name);
-  // console.log(pokemonDetails?.id);
 
   const navigate = useNavigate();
 

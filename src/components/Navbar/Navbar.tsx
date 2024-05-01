@@ -1,10 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import Logo from "../../assets/logo.png";
 import { FaSearch } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  showSearchIcon?: boolean;
+}
+
+const Navbar: React.FC = ({ showSearchIcon }: NavbarProps) => {
   const [isSearch, setIsSearch] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const toggleSearch = () => {
     setIsSearch(!isSearch);
@@ -23,12 +29,21 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  const toHome = () => {
+    navigate("/");
+  };
+
   return (
     <nav className="navbar divide-y">
       <div className="flex justify-between py-2 align-middle ">
-        <div className="logo cursor-pointer ml-8">
+        <div className="logo cursor-pointer lg:ml-8" onClick={toHome}>
           <img src={Logo} alt="logo" />
         </div>
+        {showSearchIcon && !isSearch ? (
+          <div className="search cursor-pointer" onClick={toggleSearch}>
+            <FaSearch className="text-white text-3xl mr-8" />
+          </div>
+        ) : null}
 
         {isSearch ? (
           <div className="search-input">
@@ -41,11 +56,7 @@ const Navbar: React.FC = () => {
               placeholder=" Search..."
             />
           </div>
-        ) : (
-          <div className="search cursor-pointer" onClick={toggleSearch}>
-            <FaSearch className="text-white text-3xl mr-8" />
-          </div>
-        )}
+        ) : null}
       </div>
     </nav>
   );
