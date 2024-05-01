@@ -1,18 +1,33 @@
 import { useRef, useState } from "react"
 import logo from "../assets/logo.png"
 import { IoSearch } from "react-icons/io5"
+import usePokemonList from "../hooks/usePokemonList"
+// import { useDebouncedCallback } from "use-debounce"
 
 const Navbar: React.FC<{ isLanding?: boolean }> = ({ isLanding }) => {
   const [isSearch, setSearch] = useState(false)
   const search = useRef<HTMLInputElement>(null)
+  const { setSearchQuery: setSearchQueryGlobal } = usePokemonList()
 
-  const handleSearch = () => {
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
     if (search.current) {
       const value = search.current.value
       console.log(`input : ${value}`)
+      setSearchQueryGlobal(value)
     }
     setSearch(false)
   }
+
+  //function debouncing
+  // const debounced = useDebouncedCallback(
+  //   (value) => {
+  //     // setSearchQuery(value)
+  //     setSearchQueryGlobal(value)
+  //   },
+  //   // delay in ms (1s)
+  //   1000
+  // )
 
   return (
     <div
@@ -23,6 +38,15 @@ const Navbar: React.FC<{ isLanding?: boolean }> = ({ isLanding }) => {
       {isLanding ?? (
         <div>
           {isSearch ? (
+            //with debouncing
+            // <input
+            //   onChange={(e) => debounced(e.target.value)}
+            //   onBlur={() => setSearch(false)}
+            //   className='px-4 py-[6px] text-sm rounded-xl'
+            //   type='text'
+            //   placeholder='Search...'
+            // />
+            //without debouncing
             <form onSubmit={handleSearch}>
               <input
                 className='rounded-lg px-[14px] py-1 outline-none'

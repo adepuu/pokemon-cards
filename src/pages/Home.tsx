@@ -2,7 +2,8 @@ import { PokemonCard, Navbar, Loading, Error } from "../components"
 import usePokemonList from "../hooks/usePokemonList"
 
 const Home = () => {
-  const { pokemonList, loading, error } = usePokemonList()
+  const { pokemonList, loading, error, searchQuery } = usePokemonList()
+  console.log("query >>>", searchQuery)
 
   if (error) {
     return <Error />
