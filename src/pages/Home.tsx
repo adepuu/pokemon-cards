@@ -8,18 +8,18 @@ const Home = () => {
     return <Error />
   }
 
-  if (loading) {
-    return <Loading />
-  }
-
   return (
     <div className='bg-dark w-80 h-full'>
       <Navbar />
-      <div className='grid grid-cols-2 gap-x-4 gap-y-4 py-4'>
-        {pokemonList.map((e, i) => {
-          return <PokemonCard key={i} name={e.name} />
-        })}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <div className='grid grid-cols-2 gap-x-4 gap-y-4 py-4'>
+          {pokemonList.map((e, i) => {
+            return <PokemonCard key={i} name={e.name} />
+          })}
+        </div>
+      )}
     </div>
   )
 }
