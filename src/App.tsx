@@ -18,8 +18,8 @@ function App() {
   // const detail = usePokemonDetails("bulbasaur");
 
   return (
-    <div className=' flex items-start justify-center min-h-screen'>
-      <div className='px-7'>
+    <div className=' flex items-start justify-center'>
+      <div className='px-7 bg-dark min-h-screen'>
         <RouterProvider router={router} />
       </div>
       {/* Start the development here */}

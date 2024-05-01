@@ -1,10 +1,11 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import logo from "../assets/logo.png"
 import { IoSearch } from "react-icons/io5"
 
 const Navbar: React.FC<{ isLanding?: boolean }> = ({ isLanding }) => {
   const [isSearch, setSearch] = useState(false)
   const search = useRef<HTMLInputElement>(null)
+  let [count, setCount] = useState<number>(0)
 
   const handleSearch = () => {
     if (search.current) {

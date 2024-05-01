@@ -1,11 +1,16 @@
-// import { useRef, useState } from "react"
-// import logo from "../assets/logo.png"
-// import { IoSearch } from "react-icons/io5"
-import { PokemonCard, Navbar } from "../components"
+import { PokemonCard, Navbar, Loading, Error } from "../components"
 import usePokemonList from "../hooks/usePokemonList"
 
 const Home = () => {
-  const { pokemonList } = usePokemonList()
+  const { pokemonList, loading, error } = usePokemonList()
+
+  if (error) {
+    return <Error />
+  }
+
+  if (loading) {
+    return <Loading />
+  }
 
   return (
     <div className='bg-dark w-80 h-full'>

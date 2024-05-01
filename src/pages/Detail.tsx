@@ -4,6 +4,7 @@ import { Navbar } from "../components"
 const Detail = () => {
   const { state } = useLocation()
   const healthWidth = Math.ceil(state.health / 10)
+
   return (
     <div className='w-80 h-full '>
       <Navbar isLanding={false} />
