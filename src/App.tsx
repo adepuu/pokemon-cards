@@ -2,11 +2,14 @@
 // import usePokemonDetails from './hooks/usePokemonDetail'
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
 import { Home, Detail } from "./pages"
+import { Error } from "./components"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    index: true,
+    errorElement: <Error />,
   },
   { path: "/detail/:name", element: <Detail /> },
 ])

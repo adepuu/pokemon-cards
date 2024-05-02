@@ -8,6 +8,7 @@ export const PokemonProvider: React.FC<{ children: JSX.Element }> = ({
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<unknown>(null)
   const [searchQuery, setSearchQuery] = useState<string>("")
+  const [gridValue, setGridValue] = useState<number>(2)
 
   const MAX_FETCH_DATA = 10000
   useEffect(() => {
@@ -50,6 +51,8 @@ export const PokemonProvider: React.FC<{ children: JSX.Element }> = ({
     error,
     setSearchQuery,
     searchQuery,
+    setGridValue,
+    gridValue,
   }
 
   return (

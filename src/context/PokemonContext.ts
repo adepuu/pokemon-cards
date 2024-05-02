@@ -11,6 +11,8 @@ export interface PokemonContextType {
   error: unknown
   setSearchQuery: (query: string) => void
   searchQuery: string
+  setGridValue: (value: number) => void
+  gridValue: number
 }
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined)

@@ -6,6 +6,8 @@ export default {
       dark: "#252A3E",
       white: "#FFFFFF",
       purple: "#97A0CC",
+      "dark-button": "#0C1231",
+      "light-purple": "#3D4466",
       "dark-blue": "#05091B",
     },
     extend: {

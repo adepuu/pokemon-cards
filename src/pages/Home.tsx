@@ -1,9 +1,9 @@
-import { PokemonCard, Navbar, Loading, Error } from "../components"
+import { PokemonCard, Navbar, Loading, Error, Layout } from "../components"
 import usePokemonList from "../hooks/usePokemonList"
 
 const Home = () => {
-  const { pokemonList, loading, error, searchQuery } = usePokemonList()
-  console.log("query >>>", searchQuery)
+  const { pokemonList, loading, error, gridValue } = usePokemonList()
+  console.log("gridValue >>>", gridValue)
 
   if (error) {
     return <Error />
@@ -12,10 +12,11 @@ const Home = () => {
   return (
     <div className='bg-dark w-80 h-full'>
       <Navbar />
+      <Layout />
       {loading ? (
         <Loading />
       ) : (
-        <div className='grid grid-cols-2 gap-x-4 gap-y-4 py-4'>
+        <div className={`grid grid-cols-${gridValue} gap-x-4 gap-y-4 py-4`}>
           {pokemonList.map((e, i) => {
             return <PokemonCard key={i} name={e.name} />
           })}
