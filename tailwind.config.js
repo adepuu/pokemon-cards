@@ -9,6 +9,8 @@ export default {
       "dark-button": "#0C1231",
       "light-purple": "#3D4466",
       "dark-blue": "#05091B",
+      "dark-blue-700": "#263156",
+      "green-700": "#11B047",
     },
     extend: {
       fontFamily: {

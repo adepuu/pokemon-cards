@@ -9,12 +9,19 @@ export const PokemonProvider: React.FC<{ children: JSX.Element }> = ({
   const [error, setError] = useState<unknown>(null)
   const [searchQuery, setSearchQuery] = useState<string>("")
   const [gridValue, setGridValue] = useState<number>(2)
+  const [sortBy, setSortbyQuery] = useState<string>("Sort by")
 
   const MAX_FETCH_DATA = 10000
   useEffect(() => {
     const fetchPokemonList = async () => {
       try {
         setLoading(true)
+        const storeGridValue = localStorage.getItem("gridValue")
+        if (storeGridValue && storeGridValue.length > 0) {
+          const parsedData: string = JSON.parse(storeGridValue)
+          setGridValue(Number.parseInt(parsedData))
+        }
+
         const response = await fetch(
           `https://pokeapi.co/api/v2/pokemon?limit=${
             searchQuery ? MAX_FETCH_DATA : 20
@@ -53,6 +60,8 @@ export const PokemonProvider: React.FC<{ children: JSX.Element }> = ({
     searchQuery,
     setGridValue,
     gridValue,
+    setSortbyQuery,
+    sortBy,
   }
 
   return (

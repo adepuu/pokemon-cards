@@ -1,18 +1,23 @@
 import { TfiLayoutGrid2Alt } from "react-icons/tfi"
 import { RiCheckboxBlankFill } from "react-icons/ri"
-import { useState } from "react"
 import usePokemonList from "../hooks/usePokemonList"
 
 const Layout = () => {
-  const { setGridValue: setGridValueGlobal } = usePokemonList()
-  const [gridVal, setGridVal] = useState<number>(2)
+  const {
+    setGridValue: setGridValueGlobal,
+    gridValue,
+    setSortbyQuery: setSortByGlobal,
+    sortBy,
+  } = usePokemonList()
+
   return (
     <div className='flex justify-between mt-4'>
       <select
         className='w-8/12 bg-light-purple text-purple rounded-lg'
-        defaultValue='Sort by'
+        value={sortBy}
+        onChange={(e) => setSortByGlobal(e.target.value)}
       >
-        <option value='Sort by'>Sort by</option>
+        <option value={sortBy}>{sortBy}</option>
         <option value='Hp'>Hp</option>
         <option value='Attack'>Attack</option>
         <option value='Defense'>Defense</option>
@@ -20,11 +25,11 @@ const Layout = () => {
       <div className='flex'>
         <button
           className={`p-2.5 bg-${
-            gridVal === 2 ? "dark-button" : "light-purple"
+            gridValue === 2 ? "dark-button" : "light-purple"
           } rounded-l-lg`}
           onClick={() => {
-            setGridVal(1)
             setGridValueGlobal(1)
+            localStorage.setItem("gridValue", JSON.stringify(1))
           }}
         >
           <RiCheckboxBlankFill size={20} color='#97A0CC' />
@@ -32,11 +37,11 @@ const Layout = () => {
         <div className='border border-purple' />
         <button
           className={`p-2.5 bg-${
-            gridVal === 2 ? "light-purple" : "dark-button"
+            gridValue === 2 ? "light-purple" : "dark-button"
           } rounded-r-lg`}
           onClick={() => {
-            setGridVal(2)
             setGridValueGlobal(2)
+            localStorage.setItem("gridValue", JSON.stringify(2))
           }}
         >
           <TfiLayoutGrid2Alt size={20} color='#97A0CC' />

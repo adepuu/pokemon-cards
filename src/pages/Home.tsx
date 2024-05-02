@@ -2,9 +2,8 @@ import { PokemonCard, Navbar, Loading, Error, Layout } from "../components"
 import usePokemonList from "../hooks/usePokemonList"
 
 const Home = () => {
-  const { pokemonList, loading, error, gridValue } = usePokemonList()
-  console.log("gridValue >>>", gridValue)
-
+  const { pokemonList, loading, error, gridValue, sortBy } = usePokemonList()
+  console.log("sort by", sortBy)
   if (error) {
     return <Error />
   }
