@@ -25,6 +25,15 @@ const usePokemonDetails = (pokemonName: string) => {
       }
 
       try {
+        setLoading(true);
+        const storedDetail = localStorage.getItem(pokemonName);
+        if (storedDetail && storedDetail.length > 0) {
+          const parsedData: PokemonDetails = JSON.parse(storedDetail);
+          setPokemonDetails(parsedData);
+          setLoading(false);
+          return;
+        }
+        
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
         if (!response.ok) {
           throw new Error('Failed to fetch Pokémon details.');
@@ -37,7 +46,9 @@ const usePokemonDetails = (pokemonName: string) => {
         const attack = data.stats.find((stat: any) => stat.stat.name === 'attack').base_stat;
         const defense = data.stats.find((stat: any) => stat.stat.name === 'defense').base_stat;
 
-        setPokemonDetails({ name, id, health, attack, defense, spriteFront, artworkFront });
+        const details = { name, id, health, attack, defense, spriteFront, artworkFront };
+        localStorage.setItem(details.name, JSON.stringify(details));
+        setPokemonDetails(details);
         setLoading(false);
       } catch (error) {
         setError(error);
