@@ -10,6 +10,7 @@ export const PokemonProvider: React.FC<{ children: JSX.Element }> = ({ children 
   const MAX_FETCH_DATA = 10000;
   useEffect(() => {
     const fetchPokemonList = async () => {
+      setLoading(true);
       try {
         setLoading(true);
         const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${searchQuery ? MAX_FETCH_DATA : 20}`);
