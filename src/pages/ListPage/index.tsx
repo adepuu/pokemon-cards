@@ -4,8 +4,7 @@ import MobileWrapper from "../../components/MobileWrapper";
 import usePokemonList from "../../hooks/usePokemonList";
 
 const ListPage: React.FC = () => {
-  const { pokemonList, loading, error, searchQuery } = usePokemonList();
-  console.log(searchQuery);
+  const { pokemonList, loading, error } = usePokemonList();
   if (error) return <div>Something is wrong :(</div>
   return (
     <MobileWrapper>

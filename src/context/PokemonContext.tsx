@@ -10,7 +10,7 @@ export interface PokemonContextType {
   loading: boolean;
   error: unknown;
   setSearchQuery: (query: string) => void;
-  searchQuery: string;
+  setSortByField: (query: string) => void;
 }
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
