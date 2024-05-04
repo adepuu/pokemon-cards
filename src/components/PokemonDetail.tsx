@@ -9,9 +9,10 @@ interface pokemonName {
 
 const PokemonDetail: React.FC<pokemonName> = ({ name }) => {
   const { pokemonDetails } = usePokemonDetails(name)
+  console.log(pokemonDetails?.types)
   return (
     <div className="lg:px-96" >
-      <h1 className='text-lightPurple font-DM-Sans font-normal text-xl p-6'>#1000</h1>
+      <h1 className='text-lightPurple font-DM-Sans font-normal text-xl p-6'>#{pokemonDetails?.id}</h1>
       <img className="flex justify-center w-full px-8" src={pokemonDetails?.artworkFront} alt="" />
       <div className="desc-name flex justify-between px-8 items-center">
         <h1 className='font-DM-Sans text-default text-6xl font-bold'>{pokemonDetails?.name}</h1>

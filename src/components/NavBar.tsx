@@ -10,7 +10,7 @@ import icon from '../assets/SearchIcon.png';
 const NavBar: React.FC = () => {
   const [search, setSearch] = useState(true);
   const pokemonName = useRef<HTMLInputElement>(null);
-  const { setValue } = usePokemonContext()
+  const { setValue, setSortBy } = usePokemonContext();
   const changeSearchIconState = useCallback(() => {
     setSearch((t) => !t);
   }, [search])

@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
-import Home from './Page/Home'
 import Detail from './Page/Detail'
+import Home from './Page/Home'
 // import usePokemonList from './hooks/usePokemonList'
 // import usePokemonDetails from './hooks/usePokemonDetail'
 
