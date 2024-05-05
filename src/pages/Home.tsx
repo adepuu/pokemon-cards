@@ -1,10 +1,34 @@
+import { useEffect } from "react"
 import { PokemonCard, Navbar, Loading, Error, Layout } from "../components"
-import usePokemonDetails from "../hooks/usePokemonDetail"
 import usePokemonList from "../hooks/usePokemonList"
 
 const Home = () => {
-  const { pokemonList, loading, error, gridValue, sortBy } = usePokemonList()
-  console.log("sort by", gridValue)
+  const {
+    pokemonList,
+    loading,
+    error,
+    gridValue,
+    page,
+    setPage: setPageGlobal,
+    searchQuery,
+  } = usePokemonList()
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [page])
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      setPageGlobal(page + 1)
+    }
+  }
+
+  console.log(`input : ${searchQuery}`)
+
   if (error) {
     return <Error />
   }

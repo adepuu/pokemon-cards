@@ -15,6 +15,8 @@ export interface PokemonContextType {
   gridValue: number
   setSortbyQuery: (value: string) => void
   sortBy: string
+  page: number
+  setPage: (value: number) => void
 }
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined)

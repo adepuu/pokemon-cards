@@ -32,6 +32,7 @@ const PokemonCard: React.FC<{ name: string }> = ({ name }) => {
         src={pokemonDetails?.artworkFront}
         alt=''
         className='group-hover:scale-150 transition group-hover:-translate-y-5'
+        loading='lazy'
       />
       <div className='font-dm-sans text-sm mt-2'>{pokemonDetails?.name}</div>
     </button>

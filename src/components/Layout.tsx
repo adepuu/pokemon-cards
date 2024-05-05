@@ -1,6 +1,7 @@
 import { TfiLayoutGrid2Alt } from "react-icons/tfi"
 import { RiCheckboxBlankFill } from "react-icons/ri"
 import usePokemonList from "../hooks/usePokemonList"
+import { LOCAL_STORAGE_GRID } from "../context/PokemonProvider"
 
 const Layout = () => {
   const {
@@ -15,9 +16,11 @@ const Layout = () => {
       <select
         className='w-8/12 bg-light-purple text-purple rounded-lg'
         value={sortBy}
-        onChange={(e) => setSortByGlobal(e.target.value)}
+        onChange={(e) => {
+          setSortByGlobal(e.target.value)
+        }}
       >
-        <option value={sortBy}>{sortBy}</option>
+        <option value='Sort by'>Sort by</option>
         <option value='Hp'>Hp</option>
         <option value='Attack'>Attack</option>
         <option value='Defense'>Defense</option>
@@ -29,7 +32,7 @@ const Layout = () => {
           } rounded-l-lg`}
           onClick={() => {
             setGridValueGlobal(1)
-            localStorage.setItem("gridValue", JSON.stringify(1))
+            localStorage.setItem(LOCAL_STORAGE_GRID, JSON.stringify(1))
           }}
         >
           <RiCheckboxBlankFill size={20} color='#97A0CC' />
@@ -41,7 +44,7 @@ const Layout = () => {
           } rounded-r-lg`}
           onClick={() => {
             setGridValueGlobal(2)
-            localStorage.setItem("gridValue", JSON.stringify(2))
+            localStorage.setItem(LOCAL_STORAGE_GRID, JSON.stringify(2))
           }}
         >
           <TfiLayoutGrid2Alt size={20} color='#97A0CC' />

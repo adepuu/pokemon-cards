@@ -3,7 +3,7 @@ import { Navbar } from "../components"
 
 const Detail = () => {
   const { state } = useLocation()
-  const healthWidth = Math.ceil(state.health)
+  const healthWidth = Math.ceil(state.health / 10)
 
   return (
     <div className='w-80 h-full '>
@@ -27,7 +27,7 @@ const Detail = () => {
               className='bg-gradient-to-r from-[#6CF0A1] to-[#2AE3B7] h-full rounded-md'
             />
           </div>
-          <h1 className='text-white'>{`${state.health}  from 100`}</h1>
+          <h1 className='text-white'>{`${state.health}  from 1000`}</h1>
           <hr className='border-[#3D4466] mt-[10px] mb-[15px]' />
           <div className='flex items-center justify-between'>
             <div>

@@ -13,7 +13,6 @@ const Navbar: React.FC<{ isLanding?: boolean }> = ({ isLanding }) => {
     event.preventDefault()
     if (search.current) {
       const value = search.current.value
-      console.log(`input : ${value}`)
       setSearchQueryGlobal(value)
     }
     setSearch(false)
